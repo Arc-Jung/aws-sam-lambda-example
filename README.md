@@ -1,6 +1,10 @@
-# aws-sam-lambda-example
+# AWS-SAM-LAMBDA-EXAMPLE
 
 ### First commit WooSung-Jung  in 2020-12-18
+
+- A serverless application is a combination of Lambda functions, event sources, and other resources that work together to perform tasks. Note that a serverless application is more than just a Lambda function—it can include additional resources such as APIs, databases, and event source mappings.
+
+- Try this example for your project success.
 
 ## Install AWS SAM CLI
 
