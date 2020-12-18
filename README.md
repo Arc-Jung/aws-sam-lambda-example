@@ -24,6 +24,8 @@ sam --version
 
 ## Install Docker
 
+![image1.jpg](./images/images1.png)
+
 >https://hub.docker.com/ 
 
 ## Start AWS SAM CLI with Docker
@@ -77,6 +79,8 @@ sam build --use-container
 sam local invoke
 # TIP : sam build --use-container && sam local invoke
 ```
+
+- Check result
 
 ```bash
 Mounting /Users/XXX/Project/aws-sam-lambda-example/aws-sam-lambda/.aws-sam/build/HelloWorldFunction as /var/task:ro,delegated inside runtime container
