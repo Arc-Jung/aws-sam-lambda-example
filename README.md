@@ -4,6 +4,8 @@
 
 ## Install AWS SAM CLI
 
+- If you use Mac
+
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew --version
