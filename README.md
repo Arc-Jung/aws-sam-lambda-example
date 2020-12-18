@@ -16,12 +16,14 @@ brew install aws-sam-cli
 sam --version
 ```
 
-- If you use Linux or Windows
-
 > https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-mac.html
-> 
+
+- If you use Windows
+
 > https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-windows.html
-> 
+
+- If you use Linux
+
 > https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-linux.html
 
 ## Install Docker
