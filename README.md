@@ -106,3 +106,11 @@ sam deploy --guided
 
 # Reference
 > https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-hello-world.html
+
+> https://github.com/amazon-archives/serverless-app-examples/tree/master/python
+
+> https://github.com/aws/serverless-application-model/blob/master/versions/2016-10-31.md
+
+> https://www.youtube.com/watch?v=3gCzGLdhQao&ab_channel=AWSEvents
+
+> https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-using-debugging-python.html
