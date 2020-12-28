@@ -112,7 +112,11 @@ python --version
 ```
 - Check Python3 version and the Python3 version of template.yaml file is same.
 
-2. Make build folder.
+2. Make build folder and copy app.py
+```bash
+mkdir docker/build
+cp docker/app.py docker/build/app.py
+```
 
 3. Install Python pakage in build folder.
 ```bash
