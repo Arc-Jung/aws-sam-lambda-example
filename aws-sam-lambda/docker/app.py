@@ -1,7 +1,10 @@
 import json
+import requests
+import ptvsd
 
-# import requests
-
+# Enable ptvsd on 0.0.0.0 address and on port 5890 that we'll connect later with our IDE
+# ptvsd.enable_attach(address=('localhost', 5891), redirect_output=True)
+# ptvsd.wait_for_attach()
 
 def lambda_handler(event, context):
     """Sample pure Lambda function
@@ -32,6 +35,9 @@ def lambda_handler(event, context):
     #     print(e)
 
     #     raise e
+
+    print(">>> SUCESS")
+    print(">>> SUCESS")    
 
     return {
         "statusCode": 200,

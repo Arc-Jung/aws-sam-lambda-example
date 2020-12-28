@@ -3,7 +3,7 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FWooSung-Jung%2Faws-sam-lambda-example&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 ### First commit WooSung-Jung  in 2020-12-18
 
-- A serverless application is a combination of Lambda functions, event sources, and other resources that work together to perform tasks. Note that a serverless application is more than just a Lambda function—it can include additional resources such as APIs, databases, and event source mappings.
+- A serverless application is a combination of Lambda functions, event sources, and other resources that work together to perform tasks. Note that a serverless application is more than just a Lambda function it can include additional resources such as APIs, databases, and event source mappings.
 
 - Try this example for your project success.
 
@@ -31,7 +31,7 @@ sam --version
 
 > https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-linux.html
 
-## Install Docker
+## Install Docker Hub
 
 ![image1.jpg](./images/images1.png)
 
@@ -48,7 +48,7 @@ sam init
 ```bash
 1 - AWS Quick Start Templates
 1 - Zip (artifact is a zip uploaded to S3)
-9 - python3.6
+10 - python3.7
 <YOUR PROJECT NAME>
 1 - Hello World Example
 ```
@@ -60,14 +60,14 @@ mkdir docker
 cp -r hello_world/* docker
 ```
 
-### Step 4 - Modify CodeUrl in template.yaml
+### Step 4 - Modify CodeUrl in template yaml file
 ```yaml
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: hello_world_function
       Handler: hello_world/app.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.7
 ```
 
 ```yaml
@@ -76,13 +76,14 @@ cp -r hello_world/* docker
     Properties:
       CodeUri: docker
       Handler: hello_world/app.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.7
 ```
 
 ### Step 5 - Build your application with Docker container
 ```bash
 sam build --use-container
 ```
+
 ### Step 6 - Invoke your application with Docker container
 ```bash
 sam local invoke
@@ -99,12 +100,114 @@ REPORT RequestId: 8393e7be-6a67-4b8d-b49c-45edaf928150  Init Duration: 0.31 ms  
 {"statusCode": 200, "body": "{\"message\": \"hello world\"}"}%     
 ```
 
+### Step 7 - Start debug your application with API Gateway with locally ( NOT IN CONTAINER )
+
+1. Make Python3 virtual enviroment.
+```bash
+python3 -m venv ./venv
+source .venv/bin/activate
+alias python=python3
+alias pip=pip3
+python --version
+```
+- Check Python3 version and the Python3 version of template.yaml file is same.
+
+2. Make build folder.
+
+3. Install Python pakage in build folder.
+```bash
+pip3 install -r docker/requirements.txt -t docker/build/
+```
+
+4. Start API that triggers lambda
+```bash
+sam local start-api -d 5891
+Mounting HelloWorldFunction at http://127.0.0.1:3000/events [GET]
+You can now browse to the above endpoints to invoke your functions. You do not need to restart/reload SAM CLI while working on your functions, changes will be reflected instantly/automatically. You only need to restart SAM CLI if you update your AWS SAM template
+2020-12-28 14:43:28  * Running on http://127.0.0.1:3000/ (Press CTRL+C to quit)
+```
+
+5. Make lunch.json in Visual Studio Code and Change template yaml file.
+
+![image2.png](./images/images2.png)
+
+- lunch.json
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Debug with SAM CLI (Remote Debug)",
+            "type": "python",
+            "request": "attach",
+            "port": 5891,
+            "host":  "localhost",
+            "pathMappings": [
+                {
+                "localRoot": "${workspaceFolder}/docker/build",
+                "remoteRoot" : "/var/task"
+                }
+            ]
+        }
+    ]
+}
+```
+
+- template.yaml
+```yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  aws-sam-lambda
+
+  Sample SAM Template for aws-sam-lambda
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 20
+
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: docker/build/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Events:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: '/events'
+            Method: get
+
+```
+
+6. Connect your API in path of template yaml file.
+```bash
+http://127.0.0.1:3000/events
+# TIP : Access API before starting debugging in Visual Studio Code
+```
+
+7. Check break point and start debug in Visual Studio Code.
+
+![image3.png](./images/images3.png)
+
+8. Confirm break point and debug consol.
+
+![image4.png](./images/images4.png)
+
 ### Step 7 - Deploy your application
 ```bash
 sam deploy --guided
 ```
 
 # Reference
+
 > https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-hello-world.html
 
 > https://github.com/amazon-archives/serverless-app-examples/tree/master/python
