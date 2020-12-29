@@ -61,6 +61,9 @@ cp -r hello_world/* docker
 ```
 
 ### Step 4 - Modify CodeUrl in template yaml file
+
+- Change from "hello_world_function" to "docker" in template yaml file.
+
 ```yaml
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -80,11 +83,15 @@ cp -r hello_world/* docker
 ```
 
 ### Step 5 - Build your application with Docker container
+
+- Insert comand in your shell
 ```bash
 sam build --use-container
 ```
 
 ### Step 6 - Invoke your application with Docker container
+
+- Excute lambda in your Docker container.
 ```bash
 sam local invoke
 # TIP : sam build --use-container && sam local invoke
@@ -100,7 +107,7 @@ REPORT RequestId: 8393e7be-6a67-4b8d-b49c-45edaf928150  Init Duration: 0.31 ms  
 {"statusCode": 200, "body": "{\"message\": \"hello world\"}"}%     
 ```
 
-### Step 7 - Start debug your application with API Gateway with locally ( NOT IN CONTAINER )
+## Start debug your application with API Gateway with locally ( NOT IN CONTAINER )
 
 1. Make Python3 virtual enviroment.
 ```bash
@@ -192,8 +199,10 @@ Resources:
 ```
 
 6. Connect your API in path of template yaml file.
+
+- Insert URL in your browser or Insert curl command your shell.
 ```bash
-http://127.0.0.1:3000/events
+curl http://127.0.0.1:3000/events
 # TIP : Access API before starting debugging in Visual Studio Code
 ```
 
@@ -205,7 +214,8 @@ http://127.0.0.1:3000/events
 
 ![image4.png](./images/images4.png)
 
-### Step 7 - Deploy your application
+## Deploy your application
+
 ```bash
 sam deploy --guided
 ```
