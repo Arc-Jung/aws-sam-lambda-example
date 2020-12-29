@@ -35,6 +35,7 @@ sam --version
 
 ![image1.jpg](./images/images1.png)
 
+- Download Docker Hub.
 >https://hub.docker.com/ 
 
 ## Start AWS SAM CLI with Docker
@@ -109,7 +110,7 @@ REPORT RequestId: 8393e7be-6a67-4b8d-b49c-45edaf928150  Init Duration: 0.31 ms  
 
 ## Start debug your application with API Gateway with locally ( NOT IN CONTAINER )
 
-1. Make Python3 virtual enviroment.
+1. Create Python3 virtual enviroment.
 ```bash
 python3 -m venv ./venv
 source .venv/bin/activate
@@ -138,7 +139,7 @@ You can now browse to the above endpoints to invoke your functions. You do not n
 2020-12-28 14:43:28  * Running on http://127.0.0.1:3000/ (Press CTRL+C to quit)
 ```
 
-5. Make lunch.json in Visual Studio Code and Change template yaml file.
+5. Create a lunch.json in Visual Studio Code and Change template yaml file.
 
 ![image2.png](./images/images2.png)
 
