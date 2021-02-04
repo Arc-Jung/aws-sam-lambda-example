@@ -204,6 +204,8 @@ Resources:
 - Insert URL in your browser or Insert curl command your shell.
 ```bash
 curl http://127.0.0.1:3000/events
+or Enter the address below into your Chrome browser.
+http://127.0.0.1:3000/events
 # TIP : Access API before starting debugging in Visual Studio Code
 ```
 
