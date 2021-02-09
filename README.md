@@ -78,7 +78,7 @@ cp -r hello_world/* docker
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: docker
+      CodeUri: docker # hello_world_function -> docker
       Handler: hello_world/app.lambda_handler
       Runtime: python3.7
 ```
