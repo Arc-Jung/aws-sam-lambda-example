@@ -7,7 +7,7 @@
 
 - Try this example for your project success.
 
-## Install AWS SAM CLI
+## Install AWS SAM CLI / 먼저 AWS SAM CLI를 설치합니다.
 
 - If you use Mac
 
@@ -31,21 +31,21 @@ sam --version
 
 > https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-linux.html
 
-## Install Docker Hub
+## Install Docker Hub / 도커 허브를 설치합니다.
 
 ![image1.jpg](./images/images1.png)
 
 - Download Docker Hub.
 >https://hub.docker.com/ 
 
-## Start AWS SAM CLI with Docker
+## Start AWS SAM CLI with Docker / AWS SAM CLI 명령어를 통하여 도커 허브를 이용해서 에제를 실행하세요.
 
-### Step 1 - Download a sample application
+### Step 1 - Download a sample application.
 ```bash
 sam init
 ```
 
-### Step 2 - Choice  a sample application
+### Step 2 - Choice  a sample application / 실습하고 싶은 예제를 선택합니다.
 ```bash
 1 - AWS Quick Start Templates
 1 - Zip (artifact is a zip uploaded to S3)
@@ -54,14 +54,14 @@ sam init
 1 - Hello World Example
 ```
 
-### Step 3 - Make docker image folder
+### Step 3 - Make docker image folder / 별도의 도커 이미지 폴더를 생성합니다.
 ```bash
 cd <YOUR PROJECT NAME> # Example : cd aws-sam-lambda/
 mkdir docker
 cp -r hello_world/* docker
 ```
 
-### Step 4 - Modify CodeUrl in template yaml file
+### Step 4 - Modify CodeUrl in template yaml file / 템플릿 yaml 파일에서 CodeUrl의 경로를 도커 이미지 폴더로 변경합니다.
 
 - Change from "hello_world_function" to "docker" in template yaml file.
 
@@ -83,14 +83,14 @@ cp -r hello_world/* docker
       Runtime: python3.7
 ```
 
-### Step 5 - Build your application with Docker container
+### Step 5 - Build your application with Docker container / 도커 컨테이너를 통해서 어플리케이션을 빌드하세요.
 
 - Insert comand in your shell
 ```bash
 sam build --use-container
 ```
 
-### Step 6 - Invoke your application with Docker container
+### Step 6 - Invoke your application with Docker container / 도커 컨테이너를 통하여 어플리케이션을 실행합니다.
 
 - Excute lambda in your Docker container.
 ```bash
@@ -108,7 +108,7 @@ REPORT RequestId: 8393e7be-6a67-4b8d-b49c-45edaf928150  Init Duration: 0.31 ms  
 {"statusCode": 200, "body": "{\"message\": \"hello world\"}"}%     
 ```
 
-## Start debug your application with API Gateway with locally ( NOT IN CONTAINER )
+## Start debug your application with API Gateway with locally ( NOT IN CONTAINER ) / 로컬 환경에서 디버깅을 하려면 아래 순서로 진행합니다.
 
 1. Create Python3 virtual enviroment.
 ```bash
@@ -139,7 +139,7 @@ You can now browse to the above endpoints to invoke your functions. You do not n
 2020-12-28 14:43:28  * Running on http://127.0.0.1:3000/ (Press CTRL+C to quit)
 ```
 
-5. Create a lunch.json in Visual Studio Code and Change template yaml file.
+5. Create a lunch.json in Visual Studio Code and Change template yaml file. / 비쥬얼 스튜디오 코드에서 lunch.json 파일을 수정합니다.
 
 ![image2.png](./images/images2.png)
 
@@ -199,7 +199,7 @@ Resources:
 
 ```
 
-6. Connect your API in path of template yaml file.
+6. Connect your API in path of template yaml file. / yaml 파일에 정의된 API path를 통하여 브라우저로 접속합니다.
 
 - Insert URL in your browser or Insert curl command your shell.
 ```bash
@@ -209,7 +209,7 @@ http://127.0.0.1:3000/events
 # TIP : Access API before starting debugging in Visual Studio Code
 ```
 
-7. Check break point and start debug in Visual Studio Code.
+7. Check break point and start debug in Visual Studio Code. / 비쥬얼 스튜디오 코드에서 디버깅 버튼을 이용하여 디버깅 합니다.
 
 ![image3.png](./images/images3.png)
 
@@ -217,7 +217,7 @@ http://127.0.0.1:3000/events
 
 ![image4.png](./images/images4.png)
 
-## Deploy your application
+## Deploy your application / 어플리케이션을 배포합니다.
 
 ```bash
 sam deploy --guided
