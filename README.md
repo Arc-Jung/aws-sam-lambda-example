@@ -118,7 +118,7 @@ alias python=python3
 alias pip=pip3
 python --version
 ```
-- Check Python3 version and the Python3 version of template.yaml file is same.
+- Check Python3 version and the Python3 version of template. yaml file is same.
 
 2. Make build folder and copy app.py
 ```bash
