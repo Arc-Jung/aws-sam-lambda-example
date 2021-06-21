@@ -38,7 +38,7 @@ sam --version
 - Download Docker Hub.
 >https://hub.docker.com/ 
 
-## Start AWS SAM CLI with Docker / AWS SAM CLI 명령어를 통하여 도커 허브를 이용해서 에제를 실행하세요.
+## Start AWS SAM CLI with Docker / AWS SAM CLI 명령어를 통하여 도커 허브를 이용해서 예제를 실행하세요.
 
 ### Step 1 - Download a sample application.
 ```bash
